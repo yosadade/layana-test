@@ -1,14 +1,22 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 
 const Input = ({
+  type,
   label,
   value,
   placeholder,
   onChangeText,
   secureTextEntry,
+  onSecureText,
   disable,
   keyboardType,
   iconLeft,
@@ -21,6 +29,7 @@ const Input = ({
   const onBlurForm = () => {
     setBorder(colors.grey1);
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
@@ -38,7 +47,14 @@ const Input = ({
           selectTextOnFocus={!disable}
           keyboardType={keyboardType}
         />
-        <View style={styles.iconRight}>{iconRight}</View>
+        {iconRight && (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={styles.iconRight}
+            onPress={onSecureText}>
+            {iconRight}
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
@@ -50,7 +66,6 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 18,
     width: '100%',
-    justifyContent: 'space-between',
   },
   label: {
     fontSize: 14,
@@ -61,6 +76,7 @@ const styles = StyleSheet.create({
   content: border => ({
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     borderWidth: 1,
     borderRadius: 8,
     borderColor: border,
@@ -71,11 +87,12 @@ const styles = StyleSheet.create({
   },
   iconRight: {
     position: 'absolute',
+    right: 0,
     marginHorizontal: 12,
   },
   input: {
     padding: 12,
     marginLeft: 32,
-    // width: '80%',
+    width: '80%',
   },
 });

@@ -2,8 +2,8 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
-import {Gap, Input, Link} from '../../components';
-import {ICEmail, ICPassword, ICUser} from '../../assets/icons';
+import {Gap, Input, Link, PhoneNumberInput} from '../../components';
+import {ICCheck, ICEmail, ICPassword, ICUser} from '../../assets/icons';
 import Button from '../../components/Button';
 
 const SignUp = ({navigation}) => {
@@ -14,8 +14,8 @@ const SignUp = ({navigation}) => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Text style={styles.titleContent}>Register Here</Text>
         <Text style={styles.subTitleContent}>
           Please enter your data to complete your account registration process
@@ -23,7 +23,14 @@ const SignUp = ({navigation}) => {
         <Gap height={24} />
         <Input label="Name" placeholder="" iconLeft={<ICUser />} />
         <Input label="Email" placeholder="" iconLeft={<ICEmail />} />
-        <Input label="Phone Number" placeholder="" iconLeft={<ICEmail />} />
+        {/* <Input
+          label="Phone Number"
+          placeholder=""
+          keyboardType="phone-pad"
+          iconLeft={<ICEmail />}
+          iconRight={<ICCheck />}
+        /> */}
+        <PhoneNumberInput />
         <Input
           label="Create Password"
           placeholder=""
@@ -41,8 +48,8 @@ const SignUp = ({navigation}) => {
           <Text style={styles.titleFooter}>Don't have an account?</Text>
           <Link title="Login" onPress={onHandleNavigate} />
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

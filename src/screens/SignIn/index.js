@@ -1,19 +1,39 @@
 /* eslint-disable react-native/no-inline-styles */
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {colors} from '../../utils/colors';
-import {ICEmail, ICLogo, ICPassword} from '../../assets/icons';
+import {
+  ICEmail,
+  ICEyeClosed,
+  ICEyeOpened,
+  ICLogo,
+  ICPassword,
+} from '../../assets/icons';
 import Gap from '../../components/Gap';
 import {fonts} from '../../utils/fonts';
 import {Input, Link} from '../../components';
 import Button from '../../components/Button';
 
 const SignIn = ({navigation}) => {
-  const onHandleSignIn = () => {};
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const onHandleSignIn = () => {
+    navigation.replace('MainApp');
+  };
 
   const onHandleNavigate = () => {
     navigation.navigate('SignUp');
   };
+
+  const onHandleSecureTextEntry = () => {
+    setSecureTextEntry(!secureTextEntry);
+  };
+
+  const iconSecureTextEntry = secureTextEntry ? (
+    <ICEyeClosed />
+  ) : (
+    <ICEyeOpened />
+  );
 
   return (
     <View style={styles.container}>
@@ -21,18 +41,23 @@ const SignIn = ({navigation}) => {
         <ICLogo />
       </View>
       <View style={styles.wrapperContent}>
-        <Text style={styles.titleContent}>Welcome Back</Text>
+        <Text style={styles.titleContent}>Welcome Back 👋</Text>
         <Text style={styles.subTitleContent}>
           Please enter your login information below to access your account
         </Text>
         <Gap height={24} />
-        <Input label="Email" placeholder="" iconLeft={<ICEmail />} />
+        <Input
+          label="Email"
+          placeholder="Enter Your Email"
+          iconLeft={<ICEmail />}
+        />
         <Input
           label="Password"
-          placeholder=""
+          placeholder="Enter Your Password"
           iconLeft={<ICPassword />}
-          iconRight={<ICPassword />}
-          secureTextEntry={true}
+          iconRight={iconSecureTextEntry}
+          secureTextEntry={secureTextEntry}
+          onSecureText={onHandleSecureTextEntry}
         />
         <Link
           title="Forgot Password?"
@@ -61,9 +86,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.navy,
   },
   wrapperIcon: {
+    marginTop: 78,
+    marginBottom: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 'auto',
   },
   wrapperContent: {
     paddingVertical: 24,
