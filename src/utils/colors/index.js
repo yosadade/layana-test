@@ -5,9 +5,11 @@ export const colors = {
   navy4: '#001D3D',
   white: '#FFFFFF',
   blue: '#0F172A',
+  blue2: '#F8FAFC',
   grey1: '#D1D5DB',
   grey2: '#6B7280',
   grey3: '#94A3B8',
+  grey4: '#EBF0F5',
   black1: '#111827',
   yellow1: '#FFC300',
 };

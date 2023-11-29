@@ -1,13 +1,29 @@
 /* eslint-disable react/no-unstable-nested-components */
-import {FlatList, Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import React from 'react';
 import {colors} from '../../utils/colors';
 import {ICExplore, ICLogoMini, ICMapPoint, ICNotif} from '../../assets/icons';
 import {ILAvatar} from '../../assets/ilustrations';
 import {Gap} from '../../components';
 import {fonts} from '../../utils/fonts';
-import {dataUpcomingEvent} from '../../utils/datas';
-import {CardUpcomingEvent} from '../../components/moleculs';
+import {
+  dataSearchesEvent,
+  dataTabbar,
+  dataUpcomingEvent,
+} from '../../utils/datas';
+import {
+  CardSearchesEvent,
+  CardUpcomingEvent,
+  TabBar,
+} from '../../components/moleculs';
 
 const Home = () => {
   const RenderHeader = () => {
@@ -48,12 +64,11 @@ const Home = () => {
             <ICExplore />
           </View>
         </View>
-        <Gap height={16} />
       </View>
     );
   };
 
-  const renderItem = ({item}) => {
+  const renderItemUpcomingEvent = ({item}) => {
     const {img, status, title, location, date, time} = item;
     return (
       <CardUpcomingEvent
@@ -75,21 +90,61 @@ const Home = () => {
           You have 2 upcoming events today 🗓
         </Text>
         <FlatList
+          nestedScrollEnabled
           horizontal
           data={dataUpcomingEvent}
-          renderItem={renderItem}
+          renderItem={renderItemUpcomingEvent}
           keyExtractor={item => item.id}
         />
         <Gap height={24} />
-        <View style={styles.wrapper}></View>
+        <TabBar data={dataTabbar} />
+      </View>
+    );
+  };
+
+  const RenderPopularEvent = () => {
+    return (
+      <View style={styles.wrapperUpcoming}>
+        <Text style={styles.titleUpcoming}>🥤 Popular Event</Text>
+        <Gap height={16} />
+      </View>
+    );
+  };
+
+  const renderItemSearches = ({item}) => {
+    const {img, title, attended, date} = item;
+    return (
+      <CardSearchesEvent
+        img={img}
+        title={title}
+        date={date}
+        attended={attended}
+      />
+    );
+  };
+
+  const RenderSearchesEvent = () => {
+    return (
+      <View style={styles.wrapperUpcoming}>
+        <Text style={styles.titleUpcoming}>🔍 Based on Your Searches</Text>
+        <FlatList
+          nestedScrollEnabled
+          data={dataSearchesEvent}
+          renderItem={renderItemSearches}
+          keyExtractor={item => item.id}
+        />
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      <RenderHeader />
-      <RenderUpcomingEvent />
+      <ScrollView nestedScrollEnabled={true}>
+        <RenderHeader />
+        <RenderUpcomingEvent />
+        <RenderPopularEvent />
+        <RenderSearchesEvent />
+      </ScrollView>
     </View>
   );
 };
@@ -99,7 +154,7 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.blue2,
   },
   header: {
     backgroundColor: colors.navy,
@@ -160,7 +215,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 14,
   },
   wrapperUpcoming: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.blue2,
     paddingVertical: 12,
     paddingHorizontal: 18,
   },

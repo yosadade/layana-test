@@ -13,6 +13,8 @@ import ICProfile from './UserCircle.svg';
 import ICNotif from './Bell.svg';
 import ICMapPoint from './MapPoint.svg';
 import ICCalendar from './Calendar.svg';
+import ICCalendarActive from './CalendarActive.svg';
+import ICSmile from './Smile.svg';
 
 export {
   ICLogo,
@@ -30,4 +32,6 @@ export {
   ICNotif,
   ICMapPoint,
   ICCalendar,
+  ICCalendarActive,
+  ICSmile,
 };

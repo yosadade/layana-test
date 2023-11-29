@@ -3,7 +3,7 @@ import React from 'react';
 import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 
-const Button = ({onPress, title}) => {
+const Button = ({type, onPress, title}) => {
   return (
     <TouchableOpacity
       onPress={onPress}
