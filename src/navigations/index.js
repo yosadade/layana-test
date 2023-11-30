@@ -47,13 +47,23 @@ function MainApp() {
       initialRouteName="Home"
       activeColor={colors.navy}
       inactiveColor={colors.grey1}
-      barStyle={{backgroundColor: colors.white, height: 69}}>
+      tabBarOptions={{
+        activeBackgroundColor: colors.white, // Set background ke transparent
+      }}
+      tabBarStyle={{
+        backgroundColor: colors.white, // Set background ke transparent
+      }}
+      barStyle={{
+        backgroundColor: colors.white,
+        height: 69,
+        activeBackgroundColor: colors.white,
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({color}) => <ICHome color={color} size={24} />,
+          tabBarIcon: ({focused}) => <ICHome focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -61,7 +71,7 @@ function MainApp() {
         component={Explore}
         options={{
           tabBarLabel: 'Explore',
-          tabBarIcon: ({color}) => <ICExplore color={color} size={24} />,
+          tabBarIcon: ({focused}) => <ICExplore focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -69,7 +79,9 @@ function MainApp() {
         component={Ticket}
         options={{
           tabBarLabel: 'Ticket',
-          tabBarIcon: ({color}) => <ICTicket color={color} size={24} />,
+          tabBarIcon: ({focused, color}) => (
+            <ICTicket focused={focused} color={color} size={24} />
+          ),
         }}
       />
       <Tab.Screen
@@ -77,7 +89,7 @@ function MainApp() {
         component={Profile}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({color}) => <ICProfile color={color} size={24} />,
+          tabBarIcon: ({focused}) => <ICProfile focused={focused} />,
         }}
       />
     </Tab.Navigator>
