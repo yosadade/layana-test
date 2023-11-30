@@ -18,7 +18,7 @@ import {
 } from '../../assets/icons';
 import {Gap} from '../../components';
 import {fonts} from '../../utils/fonts';
-import {ILBanner1, ILGuardian} from '../../assets/ilustrations';
+import {ILBanner1} from '../../assets/ilustrations';
 import {
   CardAbout,
   CardDetail,

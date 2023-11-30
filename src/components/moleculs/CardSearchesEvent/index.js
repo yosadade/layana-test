@@ -5,9 +5,12 @@ import {fonts} from '../../../utils/fonts';
 import {ICCalendarActive, ICSmile} from '../../../assets/icons';
 import Gap from '../../Gap';
 
-const CardSearchesEvent = ({img, title, date, attended}) => {
+const CardSearchesEvent = ({img, title, date, attended, onPress}) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.container}>
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.7}
+      style={styles.container}>
       <Image source={img} style={styles.img} />
       <View style={styles.wrapperContent}>
         <Text style={styles.title}>{title}</Text>

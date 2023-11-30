@@ -25,6 +25,7 @@ import ICAltArrowUp from './alt-arrow-up.svg';
 import ICAltArrowDown from './alt-arrow-down.svg';
 import ICClock from './Clock.svg';
 import ICTicketActive from './TicketActive.svg';
+import ICDropdownNumber from './DropdownNumber.svg';
 
 export {
   ICLogo,
@@ -54,4 +55,5 @@ export {
   ICAltArrowDown,
   ICClock,
   ICTicketActive,
+  ICDropdownNumber,
 };

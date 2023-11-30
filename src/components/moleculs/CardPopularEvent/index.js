@@ -14,7 +14,7 @@ import {ICCalendarActive, ICMapPointActive} from '../../../assets/icons';
 import Gap from '../../Gap';
 import {dataPopularEvent} from '../../../utils/datas';
 
-const CardPopularEvent = ({}) => {
+const CardPopularEvent = ({onPress}) => {
   const [isSelected, setIsSelected] = useState(0);
   return (
     <View>
@@ -22,6 +22,7 @@ const CardPopularEvent = ({}) => {
         {dataPopularEvent.map((item, i) => {
           return (
             <TouchableOpacity
+              onPress={onPress}
               onPressOut={() => setIsSelected(i)}
               activeOpacity={0.7}
               style={styles.container}
@@ -71,8 +72,7 @@ const styles = StyleSheet.create({
     padding: 12,
     borderWidth: 1,
     borderColor: colors.grey4,
-    marginRight: 12,
-    // elevation: 10,
+    marginLeft: 18,
   },
   img: {
     width: 286,

@@ -34,6 +34,10 @@ import {
 } from '../../components/moleculs';
 
 const Home = ({navigation}) => {
+  const onHandleDetail = () => {
+    navigation.navigate('HomeDetail');
+  };
+
   const RenderHeader = () => {
     return (
       <View style={styles.header}>
@@ -76,60 +80,44 @@ const Home = ({navigation}) => {
     );
   };
 
-  const renderItemUpcomingEvent = ({item}) => {
-    const {img, status, title, location, date, time} = item;
-    return (
-      <CardUpcomingEvent
-        img={img}
-        status={status}
-        title={title}
-        location={location}
-        date={date}
-        time={time}
-        onPress={() => navigation.navigate('HomeDetail', item)}
-      />
-    );
-  };
-
   const RenderUpcomingEvent = () => {
     return (
-      <View style={styles.wrapperUpcoming}>
+      <View style={styles.wrapperEvent}>
         <Text style={styles.titleNameUpcoming}>Hey Jude</Text>
-        <Text style={styles.titleUpcoming}>
+        <Text style={styles.titleEvent}>
           You have 2 upcoming events today 🗓
         </Text>
-        <FlatList
-          nestedScrollEnabled
-          horizontal
-          data={dataUpcomingEvent}
-          renderItem={renderItemUpcomingEvent}
-          keyExtractor={item => item.id}
-        />
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {dataUpcomingEvent.map((item, i) => {
+            const {img, status, title, location, date, time} = item;
+            return (
+              <CardUpcomingEvent
+                key={i}
+                img={img}
+                status={status}
+                title={title}
+                location={location}
+                date={date}
+                time={time}
+                onPress={() => onHandleDetail(item)}
+              />
+            );
+          })}
+        </ScrollView>
         <Gap height={24} />
-        <TabBar data={dataTabbar} />
+        <View style={styles.wrapperTabbar}>
+          <TabBar data={dataTabbar} />
+        </View>
       </View>
     );
   };
 
   const RenderPopularEvent = () => {
     return (
-      <View style={styles.wrapperUpcoming}>
-        <Text style={styles.titleUpcoming}>🥤 Popular Event</Text>
-        <Gap height={16} />
-        <CardPopularEvent />
+      <View style={styles.wrapperEvent}>
+        <Text style={styles.titleEvent}>🥤 Popular Event</Text>
+        <CardPopularEvent onPress={onHandleDetail} />
       </View>
-    );
-  };
-
-  const renderItemSearches = ({item}) => {
-    const {img, title, attended, date} = item;
-    return (
-      <CardSearchesEvent
-        img={img}
-        title={title}
-        date={date}
-        attended={attended}
-      />
     );
   };
 
@@ -137,12 +125,19 @@ const Home = ({navigation}) => {
     return (
       <View style={styles.wrapperUpcoming}>
         <Text style={styles.titleUpcoming}>🔍 Based on Your Searches</Text>
-        <FlatList
-          nestedScrollEnabled
-          data={dataSearchesEvent}
-          renderItem={renderItemSearches}
-          keyExtractor={item => item.id}
-        />
+        {dataSearchesEvent.map((item, i) => {
+          const {img, title, attended, date} = item;
+          return (
+            <CardSearchesEvent
+              key={i}
+              img={img}
+              title={title}
+              date={date}
+              attended={attended}
+              onPress={() => onHandleDetail(item)}
+            />
+          );
+        })}
         <Gap height={12} />
         <TouchableOpacity style={styles.btn} activeOpacity={0.7}>
           <Text style={styles.titleBtn}>Explore More</Text>
@@ -152,28 +147,23 @@ const Home = ({navigation}) => {
     );
   };
 
-  const renderItemEditorPicks = ({item}) => {
-    const {img, title, attended, date} = item;
-    return (
-      <CardSearchesEvent
-        img={img}
-        title={title}
-        date={date}
-        attended={attended}
-      />
-    );
-  };
-
   const RenderEditorPicksEvent = () => {
     return (
       <View style={styles.wrapperUpcoming}>
         <Text style={styles.titleUpcoming}>👍🏻 Editor Picks</Text>
-        <FlatList
-          nestedScrollEnabled
-          data={dataSearchesEvent}
-          renderItem={renderItemEditorPicks}
-          keyExtractor={item => item.id}
-        />
+        {dataSearchesEvent.map((item, i) => {
+          const {img, title, attended, date} = item;
+          return (
+            <CardSearchesEvent
+              key={i}
+              img={img}
+              title={title}
+              date={date}
+              attended={attended}
+              onPress={() => onHandleDetail(item)}
+            />
+          );
+        })}
         <Gap height={12} />
         <TouchableOpacity style={styles.btn} activeOpacity={0.7}>
           <Text style={styles.titleBtn}>Explore More</Text>
@@ -186,9 +176,7 @@ const Home = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView
-        nestedScrollEnabled={true}
-        showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <RenderHeader />
         <RenderUpcomingEvent />
         <RenderPopularEvent />
@@ -269,9 +257,21 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 18,
   },
+  titleEvent: {
+    fontSize: 18,
+    marginBottom: 16,
+    marginLeft: 18,
+    fontFamily: fonts.primary[600],
+    color: colors.blue,
+  },
+  wrapperEvent: {
+    backgroundColor: colors.blue2,
+    paddingVertical: 12,
+  },
   titleNameUpcoming: {
     fontSize: 16,
     marginBottom: 4,
+    marginLeft: 18,
     fontFamily: fonts.primary.normal,
     color: colors.grey3,
   },
@@ -299,5 +299,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
     fontFamily: fonts.primary[700],
     color: colors.navy,
+  },
+  wrapperTabbar: {
+    paddingHorizontal: 18,
   },
 });

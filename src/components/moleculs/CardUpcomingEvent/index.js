@@ -1,7 +1,6 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {colors} from '../../../utils/colors';
-import {ILEvent4} from '../../../assets/ilustrations';
 import {fonts} from '../../../utils/fonts';
 import {ICCalendar, ICMapPoint} from '../../../assets/icons';
 import Gap from '../../Gap';
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     width: 310,
     height: 122,
-    marginRight: 12,
+    marginLeft: 18,
     flexDirection: 'row',
   },
   img: {

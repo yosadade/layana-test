@@ -3,6 +3,7 @@ import React from 'react';
 import Navigations from './src/navigations';
 import {StatusBar} from 'react-native';
 import {colors} from './src/utils/colors';
+import {initDatabase} from './src/utils/db';
 
 const App = () => {
   return (

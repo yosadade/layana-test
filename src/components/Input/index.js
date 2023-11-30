@@ -38,7 +38,7 @@ const Input = ({
         <TextInput
           onFocus={onFocusForm}
           onBlur={onBlurForm}
-          style={styles.input}
+          style={styles.input(type)}
           value={value}
           placeholder={placeholder}
           onChangeText={onChangeText}
@@ -90,9 +90,9 @@ const styles = StyleSheet.create({
     right: 0,
     marginHorizontal: 12,
   },
-  input: {
+  input: type => ({
     padding: 12,
-    marginLeft: 32,
+    marginLeft: type === 'phone-number' ? 68 : 32,
     width: '80%',
-  },
+  }),
 });

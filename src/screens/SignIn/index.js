@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {colors} from '../../utils/colors';
 import {
@@ -13,12 +13,23 @@ import Gap from '../../components/Gap';
 import {fonts} from '../../utils/fonts';
 import {Input, Link} from '../../components';
 import Button from '../../components/Button';
+import {getUser} from '../../utils/db';
 
 const SignIn = ({navigation}) => {
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
+  const {email, password} = form;
+
   const onHandleSignIn = () => {
-    navigation.replace('MainApp');
+    if (!email || !password) {
+      navigation.replace('MainApp');
+    } else {
+      Alert.alert('Login Failed', 'Invalid email or password');
+    }
   };
 
   const onHandleNavigate = () => {
@@ -50,6 +61,13 @@ const SignIn = ({navigation}) => {
           label="Email"
           placeholder="Enter Your Email"
           iconLeft={<ICEmail />}
+          value={email}
+          onChangeText={value =>
+            setForm({
+              ...form,
+              email: value,
+            })
+          }
         />
         <Input
           label="Password"
@@ -58,6 +76,13 @@ const SignIn = ({navigation}) => {
           iconRight={iconSecureTextEntry}
           secureTextEntry={secureTextEntry}
           onSecureText={onHandleSecureTextEntry}
+          value={password}
+          onChangeText={value =>
+            setForm({
+              ...form,
+              password: value,
+            })
+          }
         />
         <Link
           title="Forgot Password?"
