@@ -33,7 +33,7 @@ import {
   TabBar,
 } from '../../components/moleculs';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const RenderHeader = () => {
     return (
       <View style={styles.header}>
@@ -86,6 +86,7 @@ const Home = () => {
         location={location}
         date={date}
         time={time}
+        onPress={() => navigation.navigate('HomeDetail', item)}
       />
     );
   };

@@ -69,9 +69,10 @@ const styles = StyleSheet.create({
     height: 256,
     borderRadius: 16,
     padding: 12,
-    borderWidth: 0.3,
+    borderWidth: 1,
+    borderColor: colors.grey4,
     marginRight: 12,
-    // elevation: 1,
+    // elevation: 10,
   },
   img: {
     width: 286,

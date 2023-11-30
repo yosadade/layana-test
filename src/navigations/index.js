@@ -9,6 +9,7 @@ import {Explore, Home, Profile, SignIn, SignUp, Ticket} from '../screens';
 import {BottomNavigator} from '../components';
 import {ICExplore, ICHome, ICProfile, ICTicket} from '../assets/icons';
 import {colors} from '../utils/colors';
+import HomeDetail from '../screens/HomeDetail';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -24,6 +25,11 @@ function Navigations() {
       <Stack.Screen
         name="SignUp"
         component={SignUp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HomeDetail"
+        component={HomeDetail}
         options={{headerShown: false}}
       />
       <Stack.Screen

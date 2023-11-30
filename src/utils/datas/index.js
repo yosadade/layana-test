@@ -4,6 +4,13 @@ import {
   ILEvent2,
   ILEvent3,
   ILEvent4,
+  ILPeople1,
+  ILPeople2,
+  ILPeople3,
+  ILPeople4,
+  ILPeople5,
+  ILPeople6,
+  ILPeople7,
 } from '../../assets/ilustrations';
 
 export const dataUpcomingEvent = [
@@ -87,5 +94,36 @@ export const dataPopularEvent = [
     location: 'Troxy',
     status: 'Available Ticket',
     attended: '2300 people attended',
+  },
+];
+
+export const dataPeopleEvent = [
+  {
+    id: 1,
+    img: ILPeople1,
+  },
+  {
+    id: 2,
+    img: ILPeople2,
+  },
+  {
+    id: 3,
+    img: ILPeople3,
+  },
+  {
+    id: 4,
+    img: ILPeople4,
+  },
+  {
+    id: 5,
+    img: ILPeople5,
+  },
+  {
+    id: 6,
+    img: ILPeople6,
+  },
+  {
+    id: 7,
+    img: ILPeople7,
   },
 ];

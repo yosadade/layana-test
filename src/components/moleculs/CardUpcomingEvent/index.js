@@ -6,9 +6,20 @@ import {fonts} from '../../../utils/fonts';
 import {ICCalendar, ICMapPoint} from '../../../assets/icons';
 import Gap from '../../Gap';
 
-const CardUpcomingEvent = ({img, status, title, location, date, time}) => {
+const CardUpcomingEvent = ({
+  img,
+  status,
+  title,
+  location,
+  date,
+  time,
+  onPress,
+}) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={styles.container}
+      onPress={onPress}>
       <Image source={img} style={styles.img} />
       <View>
         <Text style={styles.titleStatus}>{status}</Text>

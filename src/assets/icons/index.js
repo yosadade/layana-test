@@ -17,6 +17,13 @@ import ICCalendarActive from './CalendarActive.svg';
 import ICSmile from './Smile.svg';
 import ICArrowUp from './RoundArrowRightUp.svg';
 import ICMapPointActive from './MapPointActive.svg';
+import ICBack from './Arrow Left.svg';
+import ICMenuDot from './Menu Dots.svg';
+import ICShare from './Share.svg';
+import ICUserGroup from './UsersGroup.svg';
+import ICAltArrowUp from './alt-arrow-up.svg';
+import ICAltArrowDown from './alt-arrow-down.svg';
+import ICClock from './Clock.svg'
 
 export {
   ICLogo,
@@ -38,4 +45,11 @@ export {
   ICSmile,
   ICArrowUp,
   ICMapPointActive,
+  ICBack,
+  ICMenuDot,
+  ICShare,
+  ICUserGroup,
+  ICAltArrowUp,
+  ICAltArrowDown,
+  ICClock,
 };
