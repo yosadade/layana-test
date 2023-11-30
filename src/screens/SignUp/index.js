@@ -13,7 +13,6 @@ import {
   ICUser,
 } from '../../assets/icons';
 import Button from '../../components/Button';
-import {addUser} from '../../utils/db';
 
 const SignUp = ({navigation}) => {
   const [form, setForm] = useState({

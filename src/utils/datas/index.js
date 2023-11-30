@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+import {ICTicketEarly, ICTicketRegular, ICTicketStar} from '../../assets/icons';
 import {
   ILBanner1,
   ILEvent1,
@@ -125,5 +127,40 @@ export const dataPeopleEvent = [
   {
     id: 7,
     img: ILPeople7,
+  },
+];
+
+export const dataSelectTicket = [
+  {
+    id: 1,
+    icon: <ICTicketRegular />,
+    access: 'Early Access Regular',
+    seat: 'Normal seat + special price',
+    price: 14,
+    status: 'Sold',
+  },
+  {
+    id: 2,
+    icon: <ICTicketRegular />,
+    access: 'Early Access VIP',
+    seat: 'VIP seat + special price',
+    price: 24,
+    status: 'Sold',
+  },
+  {
+    id: 3,
+    icon: <ICTicketEarly />,
+    access: 'Early Access VIP',
+    seat: 'VIP seat + special price',
+    price: 24,
+    status: '',
+  },
+  {
+    id: 4,
+    icon: <ICTicketStar />,
+    access: 'VIP',
+    seat: 'VIP seat + bracelete + merchandise',
+    price: 34,
+    status: '',
   },
 ];

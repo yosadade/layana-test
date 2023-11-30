@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {
-  FlatList,
   Image,
   ScrollView,
   StyleSheet,

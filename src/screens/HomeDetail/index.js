@@ -7,15 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {colors} from '../../utils/colors';
-import {
-  ICBack,
-  ICMapPointActive,
-  ICMenuDot,
-  ICShare,
-  ICUserGroup,
-} from '../../assets/icons';
+import {ICBack, ICMenuDot, ICShare, ICUserGroup} from '../../assets/icons';
 import {Gap} from '../../components';
 import {fonts} from '../../utils/fonts';
 import {ILBanner1} from '../../assets/ilustrations';
@@ -26,14 +20,19 @@ import {
   CardFooter,
   CardMap,
   CardPeople,
+  SelectTicket,
 } from '../../components/moleculs';
 
 const HomeDetail = ({navigation, route}) => {
+  const [isVisible, setIsVisible] = useState(false);
+
   const onHandleBack = () => {
     navigation.goBack();
   };
 
-  const onHandleGetTicket = () => {};
+  const onHandleGetTicket = () => {
+    setIsVisible(!isVisible);
+  };
 
   const RenderHeader = () => {
     return (
@@ -104,6 +103,7 @@ const HomeDetail = ({navigation, route}) => {
         <RenderTitle />
         <RenderDetail />
       </ScrollView>
+      <SelectTicket isVisible={isVisible} onPress={onHandleGetTicket} />
     </View>
   );
 };

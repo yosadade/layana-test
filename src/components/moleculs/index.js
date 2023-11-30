@@ -8,6 +8,7 @@ import CardPeople from './CardPeople';
 import CardAbout from './CardAbout';
 import CardFooter from './CardFooter';
 import TabBar from './TabBar';
+import SelectTicket from './SelectTicket';
 
 export {
   CardDetail,
@@ -20,4 +21,5 @@ export {
   CardAbout,
   CardFooter,
   TabBar,
+  SelectTicket,
 };
