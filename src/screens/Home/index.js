@@ -6,11 +6,18 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import React from 'react';
 import {colors} from '../../utils/colors';
-import {ICExplore, ICLogoMini, ICMapPoint, ICNotif} from '../../assets/icons';
+import {
+  ICArrowUp,
+  ICExplore,
+  ICLogoMini,
+  ICMapPoint,
+  ICNotif,
+} from '../../assets/icons';
 import {ILAvatar} from '../../assets/ilustrations';
 import {Gap} from '../../components';
 import {fonts} from '../../utils/fonts';
@@ -20,6 +27,7 @@ import {
   dataUpcomingEvent,
 } from '../../utils/datas';
 import {
+  CardPopularEvent,
   CardSearchesEvent,
   CardUpcomingEvent,
   TabBar,
@@ -107,6 +115,7 @@ const Home = () => {
       <View style={styles.wrapperUpcoming}>
         <Text style={styles.titleUpcoming}>🥤 Popular Event</Text>
         <Gap height={16} />
+        <CardPopularEvent />
       </View>
     );
   };
@@ -133,17 +142,57 @@ const Home = () => {
           renderItem={renderItemSearches}
           keyExtractor={item => item.id}
         />
+        <Gap height={12} />
+        <TouchableOpacity style={styles.btn} activeOpacity={0.7}>
+          <Text style={styles.titleBtn}>Explore More</Text>
+          <ICArrowUp />
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  const renderItemEditorPicks = ({item}) => {
+    const {img, title, attended, date} = item;
+    return (
+      <CardSearchesEvent
+        img={img}
+        title={title}
+        date={date}
+        attended={attended}
+      />
+    );
+  };
+
+  const RenderEditorPicksEvent = () => {
+    return (
+      <View style={styles.wrapperUpcoming}>
+        <Text style={styles.titleUpcoming}>👍🏻 Editor Picks</Text>
+        <FlatList
+          nestedScrollEnabled
+          data={dataSearchesEvent}
+          renderItem={renderItemEditorPicks}
+          keyExtractor={item => item.id}
+        />
+        <Gap height={12} />
+        <TouchableOpacity style={styles.btn} activeOpacity={0.7}>
+          <Text style={styles.titleBtn}>Explore More</Text>
+          <ICArrowUp />
+        </TouchableOpacity>
+        <Gap height={20} />
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      <ScrollView nestedScrollEnabled={true}>
+      <ScrollView
+        nestedScrollEnabled={true}
+        showsVerticalScrollIndicator={false}>
         <RenderHeader />
         <RenderUpcomingEvent />
         <RenderPopularEvent />
         <RenderSearchesEvent />
+        <RenderEditorPicksEvent />
       </ScrollView>
     </View>
   );
@@ -230,5 +279,24 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     fontFamily: fonts.primary[600],
     color: colors.blue,
+  },
+  btn: {
+    width: 183,
+    height: 52,
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    borderWidth: 2,
+    borderColor: colors.navy,
+  },
+  titleBtn: {
+    fontSize: 16,
+    marginRight: 8,
+    fontFamily: fonts.primary[700],
+    color: colors.navy,
   },
 });

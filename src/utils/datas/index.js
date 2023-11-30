@@ -1,4 +1,5 @@
 import {
+  ILBanner1,
   ILEvent1,
   ILEvent2,
   ILEvent3,
@@ -56,5 +57,35 @@ export const dataSearchesEvent = [
     img: ILEvent3,
     date: 'Oct 28, 2023',
     attended: '1200 designers attended',
+  },
+];
+
+export const dataPopularEvent = [
+  {
+    id: 1,
+    title: 'Football Weekly Live Tour: London',
+    img: ILBanner1,
+    date: 'Nov 13, 2023',
+    location: 'Troxy',
+    status: 'Available Ticket',
+    attended: '2300 people attended',
+  },
+  {
+    id: 2,
+    title: 'Run the Ends 2023',
+    img: ILBanner1,
+    date: 'Nov 13, 2023',
+    location: 'Troxy',
+    status: 'Available Ticket',
+    attended: '2300 people attended',
+  },
+  {
+    id: 3,
+    title: 'Coldplay Music of The Spheres',
+    img: ILBanner1,
+    date: 'Nov 13, 2023',
+    location: 'Troxy',
+    status: 'Available Ticket',
+    attended: '2300 people attended',
   },
 ];

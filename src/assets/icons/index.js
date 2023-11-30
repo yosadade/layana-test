@@ -15,6 +15,8 @@ import ICMapPoint from './MapPoint.svg';
 import ICCalendar from './Calendar.svg';
 import ICCalendarActive from './CalendarActive.svg';
 import ICSmile from './Smile.svg';
+import ICArrowUp from './RoundArrowRightUp.svg';
+import ICMapPointActive from './MapPointActive.svg';
 
 export {
   ICLogo,
@@ -34,4 +36,6 @@ export {
   ICCalendar,
   ICCalendarActive,
   ICSmile,
+  ICArrowUp,
+  ICMapPointActive,
 };
