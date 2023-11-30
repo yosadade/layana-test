@@ -39,7 +39,7 @@ const CardMap = () => {
           </View>
         </View>
       </View>
-      {isShow && <Image source={ILMap} />}
+      {isShow && <Image source={ILMap} style={styles.map} />}
     </View>
   );
 };
@@ -82,5 +82,6 @@ const styles = StyleSheet.create({
   map: {
     width: '100%',
     height: 175,
+    borderRadius: 8,
   },
 });

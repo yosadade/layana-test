@@ -20,8 +20,10 @@ import {Gap} from '../../components';
 import {fonts} from '../../utils/fonts';
 import {ILBanner1, ILGuardian} from '../../assets/ilustrations';
 import {
+  CardAbout,
   CardDetail,
   CardEventTime,
+  CardFooter,
   CardMap,
   CardPeople,
 } from '../../components/moleculs';
@@ -30,6 +32,8 @@ const HomeDetail = ({navigation, route}) => {
   const onHandleBack = () => {
     navigation.goBack();
   };
+
+  const onHandleGetTicket = () => {};
 
   const RenderHeader = () => {
     return (
@@ -85,6 +89,10 @@ const HomeDetail = ({navigation, route}) => {
         <CardEventTime />
         <Gap height={16} />
         <CardPeople />
+        <Gap height={16} />
+        <CardAbout />
+        <Gap height={18} />
+        <CardFooter onPress={onHandleGetTicket} />
       </View>
     );
   };

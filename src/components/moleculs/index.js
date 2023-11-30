@@ -5,6 +5,8 @@ import CardDetail from './CardDetail';
 import CardMap from './CardMap';
 import CardEventTime from './CardEventTIme';
 import CardPeople from './CardPeople';
+import CardAbout from './CardAbout';
+import CardFooter from './CardFooter';
 import TabBar from './TabBar';
 
 export {
@@ -15,5 +17,7 @@ export {
   CardMap,
   CardEventTime,
   CardPeople,
+  CardAbout,
+  CardFooter,
   TabBar,
 };

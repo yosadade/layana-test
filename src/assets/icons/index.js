@@ -23,7 +23,8 @@ import ICShare from './Share.svg';
 import ICUserGroup from './UsersGroup.svg';
 import ICAltArrowUp from './alt-arrow-up.svg';
 import ICAltArrowDown from './alt-arrow-down.svg';
-import ICClock from './Clock.svg'
+import ICClock from './Clock.svg';
+import ICTicketActive from './TicketActive.svg';
 
 export {
   ICLogo,
@@ -52,4 +53,5 @@ export {
   ICAltArrowUp,
   ICAltArrowDown,
   ICClock,
+  ICTicketActive,
 };
