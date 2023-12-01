@@ -5,7 +5,15 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {Explore, Home, Profile, SignIn, SignUp, Ticket} from '../screens';
+import {
+  Explore,
+  Home,
+  Profile,
+  SignIn,
+  SignUp,
+  Splash,
+  Ticket,
+} from '../screens';
 import {BottomNavigator} from '../components';
 import {ICExplore, ICHome, ICProfile, ICTicket} from '../assets/icons';
 import {colors} from '../utils/colors';
@@ -17,6 +25,11 @@ const Tab = createMaterialBottomTabNavigator();
 function Navigations() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Splash"
+        component={Splash}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="SignIn"
         component={SignIn}

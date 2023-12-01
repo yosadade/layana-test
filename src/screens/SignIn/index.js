@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {colors} from '../../utils/colors';
 import {
   ICEmail,
@@ -14,21 +14,36 @@ import {fonts} from '../../utils/fonts';
 import {Input, Link} from '../../components';
 import Button from '../../components/Button';
 import {getUser} from '../../utils/db';
+import {getData} from '../../utils/localStorage';
 
 const SignIn = ({navigation}) => {
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
+  const [registeredUser, setRegisteredUser] = useState('');
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
   const {email, password} = form;
 
+  useEffect(() => {
+    getData('user').then(res => {
+      setRegisteredUser(res);
+    });
+  });
+
   const onHandleSignIn = () => {
-    if (!email || !password) {
-      navigation.replace('MainApp');
+    if (email || password) {
+      if (
+        email === registeredUser.email &&
+        password === registeredUser.password
+      ) {
+        navigation.replace('MainApp');
+      } else {
+        Alert.alert('Invalid credentials. Please try again.');
+      }
     } else {
-      Alert.alert('Login Failed', 'Invalid email or password');
+      Alert.alert('email and password cannot be empty');
     }
   };
 

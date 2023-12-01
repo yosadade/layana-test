@@ -13,6 +13,7 @@ import {
   ICUser,
 } from '../../assets/icons';
 import Button from '../../components/Button';
+import {storeData} from '../../utils/localStorage';
 
 const SignUp = ({navigation}) => {
   const [form, setForm] = useState({
@@ -30,9 +31,12 @@ const SignUp = ({navigation}) => {
     if (password === confirmPassword) {
       if (!name || !email || !phoneNumber || !password) {
         Alert.alert('Registration Failed', 'All fields are required');
-        return;
+      } else {
+        storeData('user', form).then(() => {
+          Alert.alert('Register Success');
+          navigation.replace('SignIn');
+        });
       }
-      navigation.replace('SignIn');
     } else {
       Alert.alert('Password and Confirm Password not same!');
     }
