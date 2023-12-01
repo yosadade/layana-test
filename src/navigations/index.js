@@ -14,7 +14,6 @@ import {
   Splash,
   Ticket,
 } from '../screens';
-import {BottomNavigator} from '../components';
 import {ICExplore, ICHome, ICProfile, ICTicket} from '../assets/icons';
 import {colors} from '../utils/colors';
 import HomeDetail from '../screens/HomeDetail';

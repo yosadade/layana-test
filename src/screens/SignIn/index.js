@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {colors} from '../../utils/colors';
 import {
@@ -21,22 +21,24 @@ const SignIn = ({navigation}) => {
     email: '',
     password: '',
   });
-  const [registeredUser, setRegisteredUser] = useState('');
+  const [registeredUser, setRegisteredUser] = useState({});
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
   const {email, password} = form;
 
   useEffect(() => {
     getData('user').then(res => {
-      setRegisteredUser(res);
+      if (res !== null) {
+        setRegisteredUser(res);
+      }
     });
   });
 
   const onHandleSignIn = () => {
     if (email || password) {
       if (
-        email === registeredUser.email &&
-        password === registeredUser.password
+        email === registeredUser?.email &&
+        password === registeredUser?.password
       ) {
         navigation.replace('MainApp');
       } else {
